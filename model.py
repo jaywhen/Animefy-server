@@ -21,7 +21,6 @@ class ConvNormLReLU(nn.Sequential):
             nn.LeakyReLU(0.2, inplace=True)
         )
 
-
 class InvertedResBlock(nn.Module):
     def __init__(self, in_ch, out_ch, expansion_ratio=2):
         super(InvertedResBlock, self).__init__()
@@ -45,8 +44,7 @@ class InvertedResBlock(nn.Module):
         if self.use_res_connect:
             out = input + out
         return out
-
-    
+  
 class Generator(nn.Module):
     def __init__(self, ):
         super().__init__()
