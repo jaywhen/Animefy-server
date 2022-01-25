@@ -15,7 +15,7 @@ net = Generator()
 net.load_state_dict(torch.load("./weights/paprika.pt", map_location="cpu"))
 net.to("cpu").eval()
 
-def compress_image_b64(b64, mb=190, k=0.9):
+def compress_image_bs4(b64, mb=190, k=0.9):
     f = base64.b64decode(b64)
     with BytesIO(f) as im:
         o_size = len(im.getvalue()) // 1024
@@ -43,7 +43,7 @@ def read_root():
 @app.post("/api/anime", response_class=Response)
 async def anime(request: Request):
     data = await request.json()
-    b64 = compress_image_b64(data['img_base64'])
+    b64 = compress_image_bs4(data['img_base64'])
     img = Image.open(BytesIO(base64.b64decode(b64))).convert("RGB")
     
     with torch.no_grad():

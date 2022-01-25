@@ -1,4 +1,4 @@
 launch server
 ```bash
-uvicorn api:app --reload
+uvicorn api:app --host 0.0.0.0 --reload
 ```
